@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace TaskManager.Domain.Events
 {
-    public record TaskCreated(string TaskId, string Title);
-    public record TaskAssigned(string TaskId, string UserId);
+    public record TaskCreated(Guid TaskId, string Title);
+    public record TaskAssigned(Guid TaskId, string UserId);
 }

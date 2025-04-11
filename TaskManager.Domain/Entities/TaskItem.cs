@@ -4,7 +4,7 @@ using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 public class TaskItem
 {
-    public string Id { get; private set; }
+    public Guid Id { get; private set; }
     public string Title { get; private set; }
     public string AssignedTo { get; private set; }
     public TaskStatus Status { get; private set; }
@@ -15,7 +15,7 @@ public class TaskItem
 
     private TaskItem() { } // For Marten
 
-    public TaskItem(string id, string title)
+    public TaskItem(Guid id, string title)
     {
         Id = id;
         Title = title;

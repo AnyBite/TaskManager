@@ -3,5 +3,5 @@
 
 namespace TaskManager.Domain.Events
 {
-    public record TaskStatusChanged(string TaskId, Enums.TaskStatus NewStatus);
+    public record TaskStatusChanged(Guid TaskId, Enums.TaskStatus NewStatus);
 }

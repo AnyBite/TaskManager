@@ -16,7 +16,7 @@ public static class DependencyInjection
         services.AddMarten(options =>
         {
             options.Connection(config.GetConnectionString("Default"));
-            options.Events.StreamIdentity = Marten.Events.StreamIdentity.AsString;
+            options.Events.StreamIdentity = Marten.Events.StreamIdentity.AsGuid;
             options.Events.AddEventType(typeof(TaskCreated));
             options.Events.AddEventType(typeof(TaskAssigned));
 

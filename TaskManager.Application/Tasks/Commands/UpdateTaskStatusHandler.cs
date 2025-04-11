@@ -17,13 +17,13 @@ public class UpdateTaskStatusHandler : IRequestHandler<UpdateTaskStatusCommand, 
 
     public async Task<Unit> Handle(UpdateTaskStatusCommand request, CancellationToken cancellationToken)
     {
-        var task = await _session.Events.AggregateStreamAsync<TaskItem>(request.Id.ToString(), token: cancellationToken);
+        var task = await _session.Events.AggregateStreamAsync<TaskItem>(request.Id, token: cancellationToken);
         if (task is null)
             throw new Exception("Task not found");
 
         task.ChangeStatus(request.NewStatus);
 
-        _session.Events.Append(request.Id.ToString(), task.Events);
+        _session.Events.Append(request.Id, task.Events);
         await _session.SaveChangesAsync(cancellationToken);
         await _publisher.PublishEvents(task.Events);
 

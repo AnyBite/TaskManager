@@ -19,12 +19,12 @@ namespace TaskManager.Application.Tasks
 
         public async Task<Guid> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
-            var task = new TaskItem(Guid.NewGuid().ToString(), request.Title);
+            var task = new TaskItem(Guid.NewGuid(), request.Title);
 
-            _session.Events.StartStream<TaskItem>(task.Id.ToString(), task.Events);
+            _session.Events.StartStream<TaskItem>(task.Id, task.Events);
             await _session.SaveChangesAsync(cancellationToken);
 
-            return Guid.Parse(task.Id);
+            return task.Id;
         }
     }
 
