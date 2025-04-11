@@ -1,6 +1,3 @@
----
-
-### 📄 `README.md`
 
 ```markdown
 # 🧠 TaskManager — Event-Sourced Task Management API
@@ -185,5 +182,5 @@ Pull requests, issue reports, and suggestions welcome!
 
 ## ✨ Author
 
-Built with love by [Your Name] — feel free to fork and customize!
+Built with love by Dusan Nikolic — feel free to fork and customize!
 ```
