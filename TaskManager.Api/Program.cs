@@ -55,5 +55,10 @@ app.MapPut("/tasks/{id:guid}/status", async (Guid id, UpdateTaskStatusRequest bo
     return Results.NoContent();
 });
 
+app.MapPut("/tasks/{id}/assign", async (Guid id, AssignTaskRequest req, ISender sender) =>
+{
+    await sender.Send(new AssignTaskCommand(id, req.UserId));
+    return Results.NoContent();
+});
 
 app.Run();
